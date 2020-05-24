@@ -1,10 +1,12 @@
-﻿namespace APBD_11.Models.Requests
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace APBD_11.Models.Requests
 {
-    public class AddDoctorRequest : Request
+    public class AddDoctorRequest 
     {
-        public string IdDoctor { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
+        [Required] public string IdDoctor { get; set; }
+        [Required] public string FirstName { get; set; }
+        [Required] public string LastName { get; set; }
+        [Required] public string Email { get; set; }
     }
 }

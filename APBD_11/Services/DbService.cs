@@ -86,22 +86,23 @@ namespace APBD_11.Services
             if (!string.IsNullOrEmpty(doctorRequest.FirstName))
             {
                 doctor.FirstName = doctorRequest.FirstName;
-                response.FirstName = doctorRequest.FirstName;
                 _context.SaveChanges();
+                response.FirstName = doctor.FirstName;
             }
 
             if (!string.IsNullOrEmpty(doctorRequest.LastName))
             {
                 doctor.LastName = doctorRequest.LastName;
-                response.LastName = doctorRequest.LastName;
                 _context.SaveChanges();
+                response.LastName = doctor.LastName;
             }
 
             if (!string.IsNullOrEmpty(doctorRequest.Email))
             {
                 doctor.Email = doctorRequest.Email;
-                response.Email = doctorRequest.Email;
                 _context.SaveChanges();
+                response.Email = doctor.Email;
+             
             }
 
             return response;

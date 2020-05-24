@@ -11,7 +11,6 @@ namespace APBD_11.Services
         Doctor GetDoctorById(int doctorId);
         AddDoctorResponse AddDoctor(AddDoctorRequest doctorRequest);
         ModifyDoctorResponse ModifyDoctor(ModifyDoctorRequest doctorRequest);
-
         void DeleteDoctor(int doctorId);
     }
 }

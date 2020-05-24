@@ -22,8 +22,7 @@ namespace APBD_11.Controllers
         public IActionResult GetAllDoctors()
         {
             var doctors = _dbService.GetAllDoctors();
-            
-                return !doctors.Any() ? StatusCode(404,"No Doctors Found") : StatusCode(200, doctors);
+            return !doctors.Any() ? StatusCode(404,"No Doctors Found") : StatusCode(200, doctors);
         }
 
         [HttpGet("{doctorId}")]
@@ -45,6 +44,7 @@ namespace APBD_11.Controllers
             {
                 return StatusCode(400, errors);
             }
+            
             var addDoctorResponse = _dbService.AddDoctor(doctorRequest);
             return (StatusCode(201, addDoctorResponse));
         }

@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace APBD_11.Models.Requests
 {
-    public class ModifyDoctorRequest : Request
+    public class ModifyDoctorRequest
     {
         public string IdDoctor { get; set; }
         public string? FirstName{ get; set; }

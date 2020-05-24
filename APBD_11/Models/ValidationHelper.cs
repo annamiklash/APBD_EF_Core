@@ -85,6 +85,13 @@ namespace APBD_11.Models
                         new Error("Email", doctorRequest.Email, "Invalid Email format. Got: " + doctorRequest.LastName));
                 }
             }
+            if (string.IsNullOrEmpty(doctorRequest.FirstName) && string.IsNullOrEmpty(doctorRequest
+                                                                  .LastName)
+                                                              && string.IsNullOrEmpty(doctorRequest
+                                                                  .Email))
+            {
+                errors.Add(new Error("multiple fields", doctorRequest.ToString(), "Nothing to update"));
+            }
 
             return errors;
         }
