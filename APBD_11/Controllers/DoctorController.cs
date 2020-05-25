@@ -11,24 +11,24 @@ namespace APBD_11.Controllers
     [ApiController]
     public class DoctorController : ControllerBase
     {
-        private readonly IDbService _dbService;
+        private readonly IDoctorDbService _doctorDbService;
 
-        public DoctorController(IDbService service)
+        public DoctorController(IDoctorDbService service)
         {
-            _dbService = service;
+            _doctorDbService = service;
         }
 
         [HttpGet]
         public IActionResult GetAllDoctors()
         {
-            var doctors = _dbService.GetAllDoctors();
+            var doctors = _doctorDbService.GetAllDoctors();
             return !doctors.Any() ? StatusCode(404,"No Doctors Found") : StatusCode(200, doctors);
         }
 
         [HttpGet("{doctorId}")]
         public IActionResult GetDoctor(int doctorId)
         {
-            var doctor = _dbService.GetDoctorById(doctorId);
+            var doctor = _doctorDbService.GetDoctorById(doctorId);
             if (doctor == null)
             {
                 return StatusCode(404, "No doctor with id " + doctorId);
@@ -45,7 +45,7 @@ namespace APBD_11.Controllers
                 return StatusCode(400, errors);
             }
             
-            var addDoctorResponse = _dbService.AddDoctor(doctorRequest);
+            var addDoctorResponse = _doctorDbService.AddDoctor(doctorRequest);
             return (StatusCode(201, addDoctorResponse));
         }
 
@@ -59,11 +59,11 @@ namespace APBD_11.Controllers
                 return StatusCode(400, errors);
             }
 
-            bool exists = _dbService.DoctorExists(Convert.ToInt32(doctorRequest.IdDoctor));
+            bool exists = _doctorDbService.DoctorExists(Convert.ToInt32(doctorRequest.IdDoctor));
 
             if (exists)
             {
-                ModifyDoctorResponse response = _dbService.ModifyDoctor(doctorRequest);
+                ModifyDoctorResponse response = _doctorDbService.ModifyDoctor(doctorRequest);
                 return (StatusCode(201, response));
             }
             return StatusCode(404, "No doctor with id " + doctorRequest.IdDoctor);
@@ -73,10 +73,10 @@ namespace APBD_11.Controllers
         [Route("{doctorId}/delete")]
         public IActionResult DeleteDoctor(int doctorId)
         {
-            bool exists = _dbService.DoctorExists(doctorId);
+            bool exists = _doctorDbService.DoctorExists(doctorId);
             if (exists)
             {
-                _dbService.DeleteDoctor(doctorId);
+                _doctorDbService.DeleteDoctor(doctorId);
                 return StatusCode(204);
             }
             return StatusCode(404, "No doctor with id " + doctorId);

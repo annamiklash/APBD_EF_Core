@@ -6,11 +6,11 @@ using APBD_11.Models.Requests;
 
 namespace APBD_11.Services
 {
-    public class DbService : IDbService
+    public class DoctorDbService : IDoctorDbService
     {
         private readonly MyDbContext _context;
 
-        public DbService(MyDbContext context)
+        public DoctorDbService(MyDbContext context)
         {
             _context = context;
         }

@@ -33,7 +33,7 @@ namespace APBD_11
                 options.UseSqlServer("Data Source=db-mssql;Initial Catalog=s18458;Integrated Security=True;");
             });
             
-            services.AddScoped<IDbService, DbService>();
+            services.AddScoped<IDoctorDbService, DoctorDbService>();
             services.AddControllers();
         }
 

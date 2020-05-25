@@ -4,7 +4,7 @@ using APBD_11.Models.Requests;
 
 namespace APBD_11.Services
 {
-    public interface IDbService
+    public interface IDoctorDbService
     {
         bool DoctorExists(int doctorId);
         IEnumerable<Doctor> GetAllDoctors();
